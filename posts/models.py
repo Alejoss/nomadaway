@@ -1,12 +1,20 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 from perfiles.models import Perfil
+
+
+class Muro(models.Model):
+	content_type = models.ForeignKey(ContentType)
+	id_objeto = models.PositiveSmallIntegerField()
+	content_object = GenericForeignKey('content_type', 'id_objeto')
 
 
 class Post(models.Model):
 	texto = models.CharField(max_length=1000)
 	perfil = models.ForeignKey(Perfil)
-	parent = # Problema - Posiblemente usar ContentTypes https://docs.djangoproject.com/en/1.8/ref/contrib/contenttypes/
+	muro = models.ForeignKey(Muro)
 	tiene_respuestas = models.BooleanField(default=False)
 	eliminado = models.BooleanField(default=False)
 
