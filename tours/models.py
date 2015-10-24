@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 
 from ciudades.models import Ciudad
@@ -23,4 +24,4 @@ class FotosTour(models.Model):
 	foto = models.URLField()
 	tour = models.ForeignKey(Tour)
 	perfil = models.ForeignKey(Perfil)
-	descripcion = models.CharField(blank=True)
+	descripcion = models.CharField(max_length=500, blank=True)
