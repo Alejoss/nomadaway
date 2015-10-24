@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class ="col-md-offset-2">
+		<hr>
+		<form method="post" action="{% url 'perfiles:editar_perfil' %}">
+			{% csrf_token %}
+			{{form.as_p}}
+			<input class ="btn btn-success" type="submit" value="enviar" />
+		</form>
+	</div>
+
+{% endblock content %}
